@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by thook on 10/7/15.
@@ -36,24 +38,43 @@ public class HamletParser {
         return hamletData;
     }
 
-    public Integer findHamlet(String input){
-        Integer count = 0;
-        if (input.matches("Hamlet")) count++;
-        return count;
-    }
-
-    public Integer findHoratio(String input){
-        Integer count = 0;
-        if (input.matches("Horatio")) count++;
-        return count;
-    }
+//    public Pattern findHamlet(){
+////        Integer count = 0;
+//        Pattern pattern = Pattern.compile("Hamlet");
+////        if (input.matches("Hamlet")) count++;
+//        return pattern;
+//    }
+//
+//    public Integer findHoratio(String input){
+//        Integer count = 0;
+//        Pattern pattern = Pattern.compile("Horatio/i");
+//        if (input.matches("Horatio")) count++;
+//        return count;
+//    }
 
     public String changeHamletToLeon(String input){
-        return input.replaceAll("Hamlet", "Leon");
+        // change standard case
+        Pattern pattern = Pattern.compile("Hamlet");
+        Matcher matcher = pattern.matcher(input);
+        String theTragedyOfLeon = matcher.replaceAll( "Leon");
+        // change upper case
+        Pattern pattern2 = Pattern.compile("HAMLET");
+        Matcher matcher2 = pattern2.matcher(theTragedyOfLeon);
+        theTragedyOfLeon = matcher2.replaceAll("LEON");
+        // return final product
+        return theTragedyOfLeon;
     }
 
     public String changeHotatioToTariq(String input){
-        return input.replaceAll("Horatio", "Tariq");
-    }
+        // change standard case
+        Pattern pattern = Pattern.compile("Horatio");
+        Matcher matcher = pattern.matcher(input);
+        String theTragedyOfLeon = matcher.replaceAll( "Tariq");
+        // change upper case
+        Pattern pattern2 = Pattern.compile("HORATIO");
+        Matcher matcher2 = pattern2.matcher(theTragedyOfLeon);
+        theTragedyOfLeon = matcher2.replaceAll("TARIQ");
+        // return final product
+        return theTragedyOfLeon;    }
 
 }
