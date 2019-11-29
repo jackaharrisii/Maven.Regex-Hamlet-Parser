@@ -1,5 +1,8 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.regex.Pattern;
 
 import static org.junit.Assert.*;
 
@@ -15,6 +18,10 @@ public class HamletParserTest {
 
     @Test
     public void testChangeHamletToLeon() {
+        hamletParser.changeHamletToLeon(hamletText);
+        Assert.assertFalse(Pattern.matches(".*Hamlet.*", hamletText));
+        Assert.assertFalse(Pattern.matches(".*HAMLET.*", hamletText));
+        System.out.println(hamletText);
     }
 
     @Test
@@ -23,6 +30,7 @@ public class HamletParserTest {
 
     @Test
     public void testFindHoratio() {
+
     }
 
     @Test

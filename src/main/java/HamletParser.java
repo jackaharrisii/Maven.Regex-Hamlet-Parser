@@ -14,8 +14,8 @@ public class HamletParser {
     }
 
     private String loadFile(){
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("hamlet.txt").getFile());
+//        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File("/Users/jack/Dev/Labs/Week6/Maven.Regex-Hamlet-Parser/src/main/resources/hamlet.txt");
         StringBuilder result = new StringBuilder("");
 
         try(Scanner scanner = new Scanner(file)){
@@ -34,6 +34,26 @@ public class HamletParser {
 
     public String getHamletData(){
         return hamletData;
+    }
+
+    public Integer findHamlet(String input){
+        Integer count = 0;
+        if (input.matches("Hamlet")) count++;
+        return count;
+    }
+
+    public Integer findHoratio(String input){
+        Integer count = 0;
+        if (input.matches("Horatio")) count++;
+        return count;
+    }
+
+    public String changeHamletToLeon(String input){
+        return input.replaceAll("Hamlet", "Leon");
+    }
+
+    public String changeHotatioToTariq(String input){
+        return input.replaceAll("Horatio", "Tariq");
     }
 
 }
